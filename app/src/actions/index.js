@@ -35,6 +35,24 @@ export function fetchLPEntities(twitterHandle) {
   };
 }
 
+export const TWEETS_REQUEST = 'TWEETS_REQUEST';
+export const TWEETS_FAILURE = 'TWEETS_FAILURE';
+export const TWEETS_SUCCESS = 'TWEETS_SUCCESS';
+
+export function fetchTweets(twitterHandle) {
+
+  return {
+    // Types of actions to emit before and after
+    types: [TWEETS_REQUEST, TWEETS_SUCCESS, TWEETS_FAILURE],
+    // Check the cache (optional):
+    shouldCallAPI: (state) => true,//!state.users[userId],
+    // Perform the fetching:
+    callAPI: () => fetch(API_BASE+'/'+twitterHandle + 'JSON', {
+    }),
+    // Arguments to inject in begin/end actions
+    payload: { }
+  };
+}
 
 export const SELECT_TWITTER_HANDLE = 'SELECT_TWITTER_HANDLE';
 

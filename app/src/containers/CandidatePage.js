@@ -3,7 +3,7 @@ import { connect } from 'react-redux';
 import { Link, IndexLink } from 'react-router';
 import { pushState } from 'redux-router';
 
-import { selectTwitterHandle, fetchLPEntities } from '../actions';
+import { selectTwitterHandle, fetchLPEntities, fetchTweets } from '../actions';
 //import FormError from '../components/form/FormError';
 
 // Change to CandidatePage.scss!
@@ -17,6 +17,7 @@ class CandidatePage extends Component {
 
     props.selectTwitterHandle(handle);
     props.fetchLPEntities(handle);
+    props.fetchTweets(handle);
 
     this.state = {
     };
@@ -27,6 +28,7 @@ class CandidatePage extends Component {
       <div className="candidatePage">
         <h5> Im ze candidatePage </h5>
         <pre style={{maxHeight: '300px'}}>{JSON.stringify(this.props.twitter.entities, null, 2)}</pre>
+        <pre style={{maxHeight: '300px'}}>{JSON.stringify(this.props.twitter.tweets, null, 2)}</pre>
         <div className="wrapper">
           <div className="tweets">Tweets in here</div>
           <div className="entities">EntitiesList in here</div>
@@ -55,7 +57,8 @@ function mapStateToProps(state) {
 
 var mapDispatchToProps = {
   selectTwitterHandle, 
-  fetchLPEntities
+  fetchLPEntities, 
+  fetchTweets
 };
 
 export default connect(mapStateToProps, mapDispatchToProps)(CandidatePage);

@@ -22,7 +22,10 @@ var twitterState = {
   twitterHandle: '',
   entities: null,
   entitiesRequest: false,
-  entitiesError: false
+  entitiesError: false,
+  tweets: null,
+  tweetsRequest: false,
+  tweetsError: false
 };
 
 function twitter(state = twitterState, action) {
@@ -50,6 +53,25 @@ function twitter(state = twitterState, action) {
         entitiesRequest: false,
         entitiesError: false,
         entities: action.response
+      };
+    case ActionTypes.TWEETS_REQUEST:
+      return {
+        ...state,
+        tweetsRequest: true,
+        tweetsError: false
+      };
+    case ActionTypes.TWEETS_FAILURE: 
+      return {
+        ...state,
+        tweetsRequest: false,
+        tweetsError: true
+      };
+    case ActionTypes.TWEETS_SUCCESS: 
+      return {
+        ...state,
+        tweetsRequest: false,
+        tweetsError: false,
+        tweets: action.response
       };
     default: 
       return state;

@@ -40,9 +40,9 @@ class App extends Component {
 App.propTypes = {
   // by (react) redux
   pushState: PropTypes.func.isRequired,
-  inputValue: PropTypes.string.isRequired,
+  inputValue: PropTypes.string.isRequired
   // by react-router
-  children: PropTypes.node.isRequired
+  //children: PropTypes.node.isRequired
 };
 
 // Redux
