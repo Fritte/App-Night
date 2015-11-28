@@ -17,15 +17,27 @@ class CandidatePage extends Component {
   constructor(props) {
     super(props);
 
-    const handle = props.routeParams.handle;
     console.log('CANDIDATE PAGE CONSTR');
 
-    props.selectTwitterHandle(handle);
-    props.fetchLPEntities(handle);
-    props.fetchTweets(handle);
+    this.fetchStuff = this.fetchStuff.bind(this);
+
+    const handle = props.routeParams.handle;
+    this.fetchStuff(props, handle);
 
     this.state = {
     };
+  }
+
+  fetchStuff(props, handle) {
+    props.selectTwitterHandle(handle);
+    props.fetchLPEntities(handle);
+    props.fetchTweets(handle);
+  }
+
+  componentWillReceiveProps(nextProps, nextContext) {
+    if (nextProps.routeParams.handle && nextProps.routeParams.handle !== this.props.routeParams.handle) {
+      this.fetchStuff(this.props, nextProps.routeParams.handle);
+    }
   }
 
   render() {
