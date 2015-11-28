@@ -21,12 +21,13 @@ class ChoosePage extends Component {
         <div className="row valign">
           <div className="col s12">
             <h3 className="center-align">PoliTwit</h3>
+            <h5 className="center-align">Choose your politicians twitter handle</h5>
           </div>
           <form className="col s8 offset-s2" 
                 onSubmit={ () => null }>
             <div className="row">
               <div className="input-field col s12">
-                <input id="handle" type="handle" ref="handle"
+                <input id="handle" type="text" ref="handle"
                   className="validate" placeholder="" />
                 <label htmlFor="handle" className="active">
                   Twitter Handle
