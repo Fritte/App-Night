@@ -27,9 +27,13 @@ class CandidatePage extends Component {
       <div className="candidatePage">
         <h5> Im ze candidatePage </h5>
         <pre style={{maxHeight: '300px'}}>{JSON.stringify(this.props.twitter.entities, null, 2)}</pre>
-        <div className="">
-          {this.props.children}
+        <div className="wrapper">
+          <div className="tweets">Tweets in here</div>
+          <div className="entities">EntitiesList in here</div>
         </div>
+        { /*<div className="">
+          {this.props.children}
+        </div> */ }
       </div>
     );
   }
