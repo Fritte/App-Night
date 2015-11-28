@@ -19,6 +19,12 @@ class App extends Component {
         }
       ]
     };
+
+    this.onAddClick = this.onAddClick.bind(this);
+  }
+
+  onAddClick(){
+    console.log('Like Button Clicked');
   }
 
   render() {
@@ -39,6 +45,11 @@ class App extends Component {
         <Tabs tabs={this.state.tabs}/>
         <div>
           {children}
+        </div>
+        <div className="fixed-action-btn" style={{ 'bottom': '45px', 'right': '24px' }}>
+          <a className="btn-floating btn-large red">
+            <i className="large material-icons" onClick={ this.onAddClick }>add</i>
+          </a>
         </div>
       </div>
     );
