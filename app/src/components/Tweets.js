@@ -11,8 +11,8 @@ export default class Tabs extends Component {
   render() {
     var tweets = '';
     if (this.props.tweets) {
-      tweets = this.props.tweets.map( (t) => (
-      <div className="card-panel grey lighten-5 z-depth-1"> 
+      tweets = this.props.tweets.slice(0, 20).map( (t) => (
+      <div className="card-panel grey lighten-5 z-depth-3"> 
         <div className="row valign-wrapper">
           <div className="col s10">
             <span className="black-text">
@@ -25,7 +25,7 @@ export default class Tabs extends Component {
     }
 
     return (
-      <div className="col s12 m8 offset-m2 l6 offset-l3">
+      <div className="">
         {tweets}
       </div>
       );
