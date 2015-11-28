@@ -22,10 +22,37 @@ class App extends Component {
     };
 
     this.onAddClick = this.onAddClick.bind(this);
+    this.addTab = this.addTab.bind(this);
+    this.handleModalAbort = this.handleModalAbort.bind(this);
+    this.handleModalAdd = this.handleModalAdd.bind(this);
+  }
+
+  addTab(twitterHandle) {
+    //get twitter name @todo
+    this.setState({
+      tabs: [ 
+        ...this.state.tabs, 
+        { label: twitterHandle, path: '/candidate/' + twitterHandle }
+      ] 
+    });
   }
 
   onAddClick(){
     console.log('Like Button Clicked');
+    this.setState({modalOpen: true});
+  }
+
+  handleModalAbort(e) {
+    this.refs.twitterHandleInput.value = '';
+    this.setState({modalOpen: false});
+  }
+
+  handleModalAdd(e) {
+    e.preventDefault();
+    const twitterHandle = this.refs.twitterHandleInput.value.trim();
+    this.addTab(twitterHandle);
+    this.refs.twitterHandleInput.value = '';
+    this.setState({modalOpen: false});
   }
 
   render() {
@@ -68,11 +95,13 @@ class App extends Component {
             <div className="modal-content">
               <h4>Add a Politican</h4>
               <p>Enter a Twitter name to add his feed to the list.</p>
-              <input type="text" ref="twitterHandleInput" placeholder="@realDonaldTrump" />
+              <form onSubmit={this.handleModalAdd}>
+                <input type="text" ref="twitterHandleInput" placeholder="@realDonaldTrump" />
+              </form>
             </div>
             <div className="modal-footer">
-              <a className="modal-action modal-close btn-flat">Abort</a>
-              <a className="modal-action modal-close btn-flat">Ok</a>
+              <a className="modal-action modal-close btn-flat" onClick={this.handleModalAbort}>Abort</a>
+              <a className="modal-action modal-close btn-flat" onClick={this.handleModalAdd}>Ok</a>
             </div>
           </div>
         </div>
