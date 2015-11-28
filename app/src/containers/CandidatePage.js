@@ -18,6 +18,7 @@ class CandidatePage extends Component {
     super(props);
 
     const handle = props.routeParams.handle;
+    console.log('CANDIDATE PAGE CONSTR');
 
     props.selectTwitterHandle(handle);
     props.fetchLPEntities(handle);
@@ -31,9 +32,7 @@ class CandidatePage extends Component {
 
     return (
       <div className="candidatePage">
-        <h5> Im ze candidatePage </h5>
-        <pre style={{maxHeight: '300px'}}>{JSON.stringify(this.props.twitter.entities, null, 2)}</pre>
-       
+        <h5> CandidatePage </h5>
         <div className="container"> 
           <div className="row">
             <div className="col s8">

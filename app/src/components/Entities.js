@@ -12,6 +12,7 @@ export default class Entities extends Component {
     const entities = this.props.entities;
     return (
       <div>
+        Entities in here!
       </div>);
   }
 }
