@@ -1,0 +1,16 @@
+@import "./common.scss";
+
+textarea.materialize-textarea {
+
+  transition: none !important;
+ 
+  &.invalid {
+    margin-bottom: 30px;
+  }
+  
+  & + label:after {
+    transition: none;
+  }
+
+}
+

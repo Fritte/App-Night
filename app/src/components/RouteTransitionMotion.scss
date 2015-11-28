@@ -1,0 +1,89 @@
+@import "~materialize-css/sass/components/prefixer";
+@import "~materialize-css/sass/components/mixins";
+@import "~materialize-css/sass/components/color";
+@import "~materialize-css/sass/components/variables";
+
+.transitionPages {
+  
+  position: relative;
+  height: 100%;
+  overflow: hidden;
+
+  .transitionPage {
+ 
+    position: absolute;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    background-color: white;
+    @include transform(translate3d(0, 0, 0));
+
+    .transitionContent {
+
+      overflow: auto;
+      -webkit-overflow-scrolling: touch;
+      position: relative;
+      height: 100%;
+
+    }
+
+  }
+
+}
+
+$page-transition-prop: all 400ms ease;
+
+.page-transition-default-enter {
+  @include transform(translate3d(0, 30%, 0) !important);
+  opacity: 0;
+  z-index: 50;
+  &.page-transition-default-enter-active {
+    @include transform(translate3d(0, 0, 0) !important);
+    opacity: 1;
+    transition: $page-transition-prop;
+  }
+}
+.page-transition-default-leave {
+  @include transform(translate3d(0, 0, 0) !important);
+  opacity: 1;
+  &.page-transition-default-leave-active {
+    @include transform(translate3d(0, 39%, 0) !important);
+    opacity: 0;
+    transition: $page-transition-prop;
+  }
+}
+
+.page-transition-forward-enter {
+  @include transform(translate3d(100%, 0, 0) !important);
+  z-index: 50;
+  &.page-transition-forward-enter-active {
+    @include transform(translate3d(0, 0, 0) !important);
+    transition: $page-transition-prop;
+  }
+}
+.page-transition-forward-leave {
+  @include transform(translate3d(0, 0, 0) !important);
+  &.page-transition-forward-leave-active {
+    @include transform(translate3d(-30%, 0, 0) !important);
+    transition: $page-transition-prop;
+  }
+}
+
+.page-transition-backward-enter {
+  @include transform(translate3d(-30%, 0, 0) !important);
+  &.page-transition-backward-enter-active {
+    @include transform(translate3d(0, 0, 0) !important);
+    transition: $page-transition-prop;
+  }
+}
+.page-transition-backward-leave {
+  @include transform(translate3d(0, 0, 0) !important);
+  z-index: 50;
+  &.page-transition-backward-leave-active {
+    @include transform(translate3d(100%, 0, 0) !important);
+    transition: $page-transition-prop;
+  }
+}
+
+
