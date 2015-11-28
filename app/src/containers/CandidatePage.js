@@ -7,10 +7,11 @@ import { selectTwitterHandle, fetchLPEntities, fetchTweets } from '../actions';
 //import FormError from '../components/form/FormError';
 
 // Change to CandidatePage.scss!
-import './ChoosePage.scss';
+import './CandidatePage.scss';
 
 
 import Tweets from '../components/Tweets';
+import Entities from '../components/Entities';
 
 class CandidatePage extends Component {
   constructor(props) {
@@ -32,14 +33,17 @@ class CandidatePage extends Component {
       <div className="candidatePage">
         <h5> Im ze candidatePage </h5>
         <pre style={{maxHeight: '300px'}}>{JSON.stringify(this.props.twitter.entities, null, 2)}</pre>
-        
-        <div className="wrapper">
-          <Tweets tweets={this.props.twitter.tweets} />
-          <div className="entities">EntitiesList in here</div>
+       
+        <div className="container"> 
+          <div className="row">
+            <div className="col s8">
+              <Tweets tweets={this.props.twitter.tweets} />
+            </div>
+            <div className="col s4">
+              <Entities entities={this.props.twitter.entities} />
+            </div>
+          </div>
         </div>
-        { /*<div className="">
-          {this.props.children}
-        </div> */ }
       </div>
     );
   }
