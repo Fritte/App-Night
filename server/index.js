@@ -5,6 +5,15 @@ var path = require('path');
 
 var port = 3000 || process.argv[0];
 
+// lazy cors headers
+app.all('/*', function(req, res, next) {
+  res.header('Access-Control-Allow-Origin', '*');
+  res.header('Access-Control-Allow-Methods', 'GET,POST,PUT,DELETE');
+  res.header('Access-Control-Allow-Headers', req.header('Access-Control-Request-Headers'));
+  next();
+});
+
+
 fs.readdir('.', function(err, files){
     if(err){
         throw Error("Error occured: " + err);

@@ -25,8 +25,11 @@ class CandidatePage extends Component {
   render() {
     return (
       <div className="candidatePage">
-        <pre>{this.props.twitter.entities}</pre>
-        {this.props.children}
+        <h5> Im ze candidatePage </h5>
+        <pre style={{maxHeight: '300px'}}>{JSON.stringify(this.props.twitter.entities, null, 2)}</pre>
+        <div className="">
+          {this.props.children}
+        </div>
       </div>
     );
   }
@@ -37,7 +40,7 @@ CandidatePage.propTypes = {
   // redux-router
   twitter: PropTypes.object.isRequired,
   selectTwitterHandle: PropTypes.func.isRequired,
-  fetchLPEntitites: PropTypes.func.isRequired
+  fetchLPEntities: PropTypes.func.isRequired
 };
 
 function mapStateToProps(state) {
