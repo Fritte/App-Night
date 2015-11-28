@@ -8,9 +8,9 @@ import { Route, IndexRoute, IndexRedirect } from 'react-router';
 import GenericComponentWrapper from '../components/GenericComponentWrapper';
 import App from './App.js';
 import ChoosePage from './ChoosePage.js';
-import CandidatePage form './CandidatePage.js';
+import CandidatePage from './CandidatePage.js';
 import KeywordsPage from './KeywordsPage.js';
-import OtherPage form './OtherPage.js';
+import OtherPage from './OtherPage.js';
 
 export default class Root extends Component {
 
