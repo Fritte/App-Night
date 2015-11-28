@@ -36,10 +36,10 @@ export default class Root extends Component {
           <ReduxRouter>
 
             <Route path="/" component={App}>
-              <IndexRoute component={ChoosePage} />
+              { /*<IndexRoute component={ChoosePage} /> */ }
               <Route path="candidate/:handle" component={CandidatePage}>
                 <Route path="keywords" component={KeywordsPage} />
-                <Route path="other" component={OtherPage} />
+                { /*<Route path="other" component={OtherPage} />*/ }
                 <IndexRedirect to="keywords" />
               </Route>
             </Route>
