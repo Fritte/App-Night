@@ -8,6 +8,7 @@ class App extends Component {
   constructor(props) {
     super(props);
     this.state = {
+      modalOpen: false,
       tabs: [
         {
           label: 'Hillarious Clinton',
@@ -29,22 +30,51 @@ class App extends Component {
 
   render() {
     const { children } = this.props;
+    const { modalOpen } = this.state;
+
+    const overlayStyle = !modalOpen ? {} : {
+      display: 'block',
+      opacity: 0.5
+    };
+    const modalStyle = !modalOpen ? {} : {
+      display: 'block',
+      top: '30%',
+      //transform: 'translateY(-50%)',
+      zIndex: 1005
+    };
+
     return (
-      <div className="appContainer">
-        <nav>
-          <div className="top-nav">
-            <div className="container">
-              <div className="nav-wrapper">
-                <a href="#" className="brand-logo">President Barometer</a>
+      <div className="appPage">
+        <div className="appContainer">
+          <nav>
+            <div className="top-nav">
+              <div className="container">
+                <div className="nav-wrapper">
+                  <a href="#" className="brand-logo">President Barometer</a>
+                </div>
               </div>
             </div>
+          </nav>
+          <input type="text" name="twitterHandle" placeholder="twitter handle" />
+          <button>Add</button>
+          <Tabs tabs={this.state.tabs}/>
+          <div>
+            {children}
           </div>
-        </nav>
-        <input type="text" name="twitterHandle" placeholder="twitter handle" />
-        <button>Add</button>
-        <Tabs tabs={this.state.tabs}/>
-        <div>
-          {children}
+        </div>
+        <div className="modalWrapper">
+          <div className="lean-overlay" style={overlayStyle}></div>
+          <div className="modal" style={modalStyle}>
+            <div className="modal-content">
+              <h4>Add a Politican</h4>
+              <p>Enter a Twitter name to add his feed to the list.</p>
+              <input type="text" ref="twitterHandleInput" placeholder="@realDonaldTrump" />
+            </div>
+            <div className="modal-footer">
+              <a className="modal-action modal-close btn-flat">Abort</a>
+              <a className="modal-action modal-close btn-flat">Ok</a>
+            </div>
+          </div>
         </div>
         <div className="fixed-action-btn" style={{ 'bottom': '45px', 'right': '24px' }}>
           <a className="btn-floating btn-large red">
