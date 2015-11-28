@@ -25,7 +25,15 @@ class App extends Component {
     const { children } = this.props;
     return (
       <div className="appContainer">
-        <h3> APP BANNER - POLITWIT </h3>
+        <nav>
+          <div className="top-nav">
+            <div className="container">
+              <div className="nav-wrapper">
+                <a href="#" className="brand-logo">President Barometer</a>
+              </div>
+            </div>
+          </div>
+        </nav>
         <input type="text" name="twitterHandle" placeholder="twitter handle" />
         <button>Add</button>
         <Tabs tabs={this.state.tabs}/>
