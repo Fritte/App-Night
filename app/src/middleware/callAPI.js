@@ -50,9 +50,9 @@ export default function callAPI({ dispatch, getState }) {
         type: requestType
       }));
 
-      const token = getState().auth.bearerToken;
+      //const token = getState().auth.bearerToken;
       
-      return callAPI(token)
+      return callAPI(/*token*/)
       .then(checkStatus)
       .then(parseJSON)
       .then(

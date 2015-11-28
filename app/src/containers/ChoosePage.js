@@ -3,7 +3,9 @@ import { connect } from 'react-redux';
 import { Link, IndexLink } from 'react-router';
 import { pushState } from 'redux-router';
 
-//import { fetchLogin } from '../actions';
+//import { selectTwitterHandle } from '../actions';
+import { Form } from 'formsy-react';
+import Input from '../components/form/Input';
 import FormError from '../components/form/FormError';
 
 import './ChoosePage.scss';
@@ -11,8 +13,15 @@ import './ChoosePage.scss';
 class ChoosePage extends Component {
   constructor(props) {
     super(props);
+    this.handleSubmit = this.handleSubmit.bind(this);
     this.state = {
     };
+  }
+
+  handleSubmit(model, resetForm, invalidateForm) {
+    const handle = model.handle;
+    console.log('model', model, handle);
+    this.props.pushState(null, '/candidate/'+handle);
   }
 
   render() {
@@ -23,16 +32,16 @@ class ChoosePage extends Component {
             <h3 className="center-align">PoliTwit</h3>
             <h5 className="center-align">Choose your politicians twitter handle</h5>
           </div>
-          <form className="col s8 offset-s2" 
-                onSubmit={ () => null }>
+          <Form className="col s8 offset-s2" 
+                onValidSubmit={ this.handleSubmit }>
+            <Input name="handle" type="text" className="col s12"
+                label="Twitter Handle" placeholder="trump" 
+                validations="minLength:2" 
+                validationErrors={{ 
+                  minLength: 'Minimum 2 characters' 
+                }} 
+                required /> 
             <div className="row">
-              <div className="input-field col s12">
-                <input id="handle" type="text" ref="handle"
-                  className="validate" placeholder="" />
-                <label htmlFor="handle" className="active">
-                  Twitter Handle
-                </label>
-              </div>
               <div className="col s12 right-align">
                 <button type="submit"
                   className="btn waves-effect waves-light">
@@ -43,7 +52,7 @@ class ChoosePage extends Component {
                 <FormError error={this.state.loginError} />
               </div>
             </div>
-          </form>
+          </Form>
         </div>
       </div>
     );
