@@ -36,6 +36,9 @@
     &.negative, &.negative:focus {
       @extend .red, .darken-4;
     }
+    &.mixed, &.mixed:focus {
+      @extend .purple, .darken-4;
+    }
   }
 
 }

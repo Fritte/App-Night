@@ -29,8 +29,9 @@ export default class Entities extends Component {
     var entities = [];
     if (this.props.entities && this.props.entities.entities) entities = this.props.entities.entities;
     entities.sort(function(a,b) {
-      var asent = a.sentiment.type, bsent = b.sentiment.type;
-      return asent < bsent ? 1 : -1;
+      var asent = a.sentiment.mixed !== '1' ? a.sentiment.type : 'mixed', bsent = b.sentiment.mixed !== '1' ? b.sentiment.type : 'mixed';
+      //var arelev = a.relevance, brelev = b.relevance;
+      return asent < bsent ? 1 : -1; //asent == bsent ? arelev > brelev ? 1 : -1;
     });
     return (
       <div className="entitiesComp">
@@ -40,9 +41,10 @@ export default class Entities extends Component {
               var cName = ClassNames({
                 'chip entity': true,
                 'selected': v == this.state.selected,
-                'positive': v.sentiment.type === 'positive',
-                'neutral': v.sentiment.type === 'neutral',
-                'negative': v.sentiment.type === 'negative'
+                'mixed': v.sentiment.mixed === '1',
+                'positive': v.sentiment.type === 'positive' && v.sentiment.mixed !== '1',
+                'neutral': v.sentiment.type === 'neutral' && v.sentiment.mixed !== '1',
+                'negative': v.sentiment.type === 'negative' && v.sentiment.mixed !== '1'
               });
               var sObj = {};
               return ( 
