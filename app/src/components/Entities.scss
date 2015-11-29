@@ -16,8 +16,11 @@
       white-space: nowrap;
     }
 
+    opacity: 0.5;
+
     &.selected {
-      @extend .z-depth-3
+      @extend .z-depth-3;
+      opacity: 1;
     }
   }
 

@@ -11,6 +11,14 @@ export default class Entities extends Component {
     }; 
   }
 
+  componentWillReceiveProps(nextProps) {
+    if (nextProps.entities !== this.props.entities) {
+      console.log('ENTITIES: reset');
+      //this.setState({selected: null});
+      this.handleSelect(null);
+    }
+  }
+
   handleSelect(entity) {
     console.log(entity);
     this.setState({selected: entity});
@@ -25,8 +33,8 @@ export default class Entities extends Component {
       <div className="entitiesComp">
         <h5>Most frequent Entities</h5>
         { entities.map( v => 
-            <button className="btn entity" title={v.text} 
-              key={v.text} onClick={this.handleSelect.bind(this, v)}
+            <button className={'btn entity' + (v == this.state.selected ? ' selected' : '')} 
+              title={v.text} key={v.text} onClick={this.handleSelect.bind(this, v)}
             >
               <span>{v.text}</span>
             </button>)
