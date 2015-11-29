@@ -8,11 +8,14 @@
   .entitiesWrapper {
     overflow-y: scroll;
     height: 500px;
+    width: 250px;
   }
 
   .entity {
     margin: 4px 4px;
     color: white;
+
+    max-width: 200px;
 
     span {
       display: block;
