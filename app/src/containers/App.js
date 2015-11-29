@@ -11,12 +11,12 @@ class App extends Component {
       modalOpen: false,
       tabs: [
         {
-          label: 'Hillarious Clinton',
-          path: '/candidate/hillary'
+          label: '@HillaryClinton',
+          path: '/candidate/HillaryClinton'
         },
         {
-          label: 'Donatious Trump',
-          path: '/candidate/trump'
+          label: '@realDonaldTrump',
+          path: '/candidate/realDonaldTrump'
         }
       ]
     };
@@ -32,7 +32,7 @@ class App extends Component {
     this.setState({
       tabs: [ 
         ...this.state.tabs, 
-        { label: twitterHandle, path: '/candidate/' + twitterHandle }
+        { label: twitterHandle, path: '/candidate/' + twitterHandle.substr(1) }
       ] 
     });
   }
@@ -77,7 +77,7 @@ class App extends Component {
             <div className="top-nav">
               <div className="container">
                 <div className="nav-wrapper">
-                  <a href="#" className="brand-logo">President Barometer</a>
+                  <a href="#" className="brand-logo">PoliTweet</a>
                 </div>
               </div>
             </div>
