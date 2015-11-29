@@ -1,0 +1,26 @@
+@import "~materialize-css/sass/components/prefixer";
+@import "~materialize-css/sass/components/mixins";
+@import "~materialize-css/sass/components/color";
+@import "~materialize-css/sass/components/variables";
+
+.entitiesComp {
+
+  button.entity {
+    width: 100%;
+    margin: 10px 0;
+
+    span {
+      display: block;
+      overflow: hidden;
+      text-overflow: ellipsis;
+      white-space: nowrap;
+    }
+
+    &.selected {
+      @extend .z-depth-3
+    }
+  }
+
+}
+
+
