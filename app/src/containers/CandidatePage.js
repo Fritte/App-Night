@@ -20,11 +20,13 @@ class CandidatePage extends Component {
     console.log('CANDIDATE PAGE CONSTR');
 
     this.fetchStuff = this.fetchStuff.bind(this);
+    this.handleEntityChange = this.handleEntityChange.bind(this);
 
     const handle = props.routeParams.handle;
     this.fetchStuff(props, handle);
 
     this.state = {
+      selectedEntity: null
     };
   }
 
@@ -40,6 +42,10 @@ class CandidatePage extends Component {
     }
   }
 
+  handleEntityChange(entity) {
+    this.setState({selectedEntity: entity});
+  }
+
   render() {
 
     return (
@@ -48,10 +54,14 @@ class CandidatePage extends Component {
         <div className="container"> 
           <div className="row">
             <div className="col s8">
-              <Tweets tweets={this.props.twitter.tweets} />
+              <Tweets tweets={this.props.twitter.tweets} 
+                selectedEntity={this.state.selectedEntity} 
+              />
             </div>
             <div className="col s4">
-              <Entities entities={this.props.twitter.entities} />
+              <Entities entities={this.props.twitter.entities} 
+                setEntity={this.handleEntityChange} 
+              />
             </div>
           </div>
         </div>
