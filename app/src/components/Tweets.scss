@@ -1,0 +1,21 @@
+@import "~materialize-css/sass/components/prefixer";
+@import "~materialize-css/sass/components/mixins";
+@import "~materialize-css/sass/components/color";
+@import "~materialize-css/sass/components/variables";
+
+.tweetsComp {
+
+  .tweet {
+    .scores {
+      margin-top: 10px;
+      > span {
+        margin-right: 20px;
+        i {
+          vertical-align: middle;
+          font-size: 1.5em;
+          margin-right: 8px;
+        }
+      }
+    }
+  }
+}
