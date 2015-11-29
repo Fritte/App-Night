@@ -82,8 +82,6 @@ class App extends Component {
               </div>
             </div>
           </nav>
-          <input type="text" name="twitterHandle" placeholder="twitter handle" />
-          <button>Add</button>
           <Tabs tabs={this.state.tabs}/>
           <div>
             {children}
