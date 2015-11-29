@@ -19,19 +19,40 @@ export default class Tabs extends Component {
       if(!selectedTag){
         tweets = this.props.tweets.slice(0, 20);
       } else {
-        tweets = this.props.tweets.filter( (t) => t.text.includes(selectedTag)).slice(0, 20);
+        tweets = this.props.tweets.filter( (t) => t.text.includes(selectedTag)).slice(0, 20); //.map(function(t){t.text='<bold>bla</bold>'; return t;});
       }
-      tweets = tweets.map( (t) => (
-      <div key={t.id} className="card-panel grey lighten-5 z-depth-3"> 
-        <div className="row valign-wrapper">
-          <div className="col s10">
-            <span className="black-text">
-              <div> {t.text} </div>
-            </span>
+
+      if(!selectedTag){
+        tweets = tweets.map( (t) => (      
+          <div key={t.id} className="card-panel grey lighten-5 z-depth-3"> 
+            <div className="row valign-wrapper">
+              <div className="col s10">
+                <span className="black-text">
+                  <div> {t.text} 
+                  </div>
+                </span>
+              </div>
+            </div>
           </div>
-        </div>
-      </div>
-      )) ; 
+          ));
+      }
+      else{
+        tweets = tweets.map( (t) => (      
+          <div key={t.id} className="card-panel grey lighten-5 z-depth-3"> 
+            <div className="row valign-wrapper">
+              <div className="col s10">
+                <span className="black-text">
+                  <div> 
+                  {t.text.slice(0, t.text.indexOf(selectedTag))} 
+                  <div className="blue-text text-darken-2" style= {{display: 'inline'}}> <strong> { selectedTag } </strong> </div>
+                  {t.text.slice(t.text.indexOf(selectedTag) + selectedTag.length )}
+                  </div>
+                </span>
+              </div>
+            </div>
+          </div>
+          ));
+      } 
     }
 
     return (

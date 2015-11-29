@@ -27,12 +27,14 @@ export default class Entities extends Component {
 
   render() {
     var entities = [];
-    if (this.props.entities && this.props.entities.entities) entities = this.props.entities.entities;
+    if (this.props.entities && this.props.entities.entities) entities = this.props.entities.entities.slice(0);
+
     entities.sort(function(a,b) {
       var asent = a.sentiment.mixed !== '1' ? a.sentiment.type : 'mixed', bsent = b.sentiment.mixed !== '1' ? b.sentiment.type : 'mixed';
       //var arelev = a.relevance, brelev = b.relevance;
       return asent < bsent ? 1 : -1; //asent == bsent ? arelev > brelev ? 1 : -1;
     });
+
     return (
       <div className="entitiesComp">
         <h5>Most frequent Entities</h5>
@@ -49,7 +51,7 @@ export default class Entities extends Component {
               var sObj = {};
               return ( 
                 <div className={cName} style={sObj} 
-                  title={v.text} key={v.text} onClick={this.handleSelect.bind(this, v)}
+                  title={v.text} key={v.pseudoHash} onClick={this.handleSelect.bind(this, v)}
                 >
                   <span>{v.text}</span>
                 </div>

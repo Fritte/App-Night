@@ -47,7 +47,14 @@ function twitter(state = twitterState, action) {
         entitiesRequest: false,
         entitiesError: true
       };
-    case ActionTypes.LP_ENTITIES_SUCCESS: 
+    case ActionTypes.LP_ENTITIES_SUCCESS:
+      if (action.response.entities && action.response.entities.length) {
+        action.response.entities = action.response.entities.map( e => {
+          e.pseudoHash = Math.random().toString(32).substr(2);
+          return e;
+        });
+      }
+
       return {
         ...state,
         entitiesRequest: false,
