@@ -16,6 +16,7 @@ export default class Entities extends Component {
 
     return (
       <div className="entitiesComp">
+        <h5>Most frequent Entities</h5>
         { entities.map( v => 
             <button className="btn entity" title={v.text}>
               <span>{v.text}</span>

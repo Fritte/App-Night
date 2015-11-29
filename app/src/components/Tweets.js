@@ -33,6 +33,7 @@ export default class Tabs extends Component {
 
     return (
       <div className="">
+        <h5>Tweets</h5>
         {tweets}
       </div>
       );
