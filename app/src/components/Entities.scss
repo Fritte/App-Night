@@ -22,6 +22,15 @@
       @extend .z-depth-3;
       opacity: 1;
     }
+    &.positive, &.positve:focus {
+      @extend .green, .darken-4;
+    }
+    &.neutral, &.neutral:focus {
+      @extend .blue-grey, .darken-2;
+    }
+    &.negative, &.negative:focus {
+      @extend .red, .darken-4;
+    }
   }
 
 }

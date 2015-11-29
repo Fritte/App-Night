@@ -35,7 +35,10 @@ export default class Entities extends Component {
         { entities.map( v => {
             var cName = ClassNames({
               'btn entity': true,
-              'selected': v == this.state.selected
+              'selected': v == this.state.selected,
+              'positive': v.sentiment.type === 'positive',
+              'neutral': v.sentiment.type === 'neutral',
+              'negative': v.sentiment.type === 'negative'
             });
             var sObj = {};
             return ( 
