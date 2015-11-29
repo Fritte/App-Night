@@ -5,6 +5,11 @@
 
 .entitiesComp {
 
+  .entitiesWrapper {
+    overflow-y: scroll;
+    height: 500px;
+  }
+
   button.entity {
     width: 100%;
     margin: 10px 0;

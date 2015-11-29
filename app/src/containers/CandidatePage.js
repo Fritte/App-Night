@@ -17,8 +17,6 @@ class CandidatePage extends Component {
   constructor(props) {
     super(props);
 
-    console.log('CANDIDATE PAGE CONSTR');
-
     this.fetchStuff = this.fetchStuff.bind(this);
     this.handleEntityChange = this.handleEntityChange.bind(this);
 
@@ -53,12 +51,12 @@ class CandidatePage extends Component {
         <h5> CandidatePage </h5>
         <div className="container"> 
           <div className="row">
-            <div className="col s8">
+            <div className="col s8 tweetsCompWrapper">
               <Tweets tweets={this.props.twitter.tweets} 
                 selectedEntity={this.state.selectedEntity} 
               />
             </div>
-            <div className="col s4">
+            <div className="col s4 entitiesCompWrapper">
               <Entities entities={this.props.twitter.entities} 
                 setEntity={this.handleEntityChange} 
               />
