@@ -5,6 +5,17 @@
 
 .tweetsComp {
 
+  .sortField {
+    margin-bottom: 20px;
+    label {
+      position: relative;
+      top: 0;
+    }
+    select {
+      display: block;
+    }
+  }
+
   .tweet {
     .scores {
       margin-top: 10px;

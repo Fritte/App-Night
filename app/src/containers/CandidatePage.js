@@ -48,7 +48,6 @@ class CandidatePage extends Component {
 
     return (
       <div className="candidatePage">
-        <h5> CandidatePage </h5>
         <div className="container"> 
           <div className="row">
             <div className="col s8 tweetsCompWrapper">

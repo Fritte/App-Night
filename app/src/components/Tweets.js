@@ -6,8 +6,15 @@ export default class Tabs extends Component {
   constructor(props) {
     super(props);
 
+    this.handleSortChange = this.handleSortChange.bind(this);
+
     this.state = {
+      sortOrder: 'date_desc'
     }; 
+  }
+
+  handleSortChange(e) {
+    this.setState({ sortOrder: e.target.value });
   }
 
   render() {
@@ -24,6 +31,23 @@ export default class Tabs extends Component {
       } else {
         tweets = this.props.tweets.filter( (t) => t.text.includes(selectedTag)).slice(0, 20); 
       }
+
+      switch (this.state.sortOrder) {
+        case 'retweets_desc':
+          tweets = tweets.sort( 
+              (a, b) => a.retweet_count < b.retweet_count ? 1 : ( a.retweet_count > b.retweet_count ? -1 : 0 ) 
+          );
+          break;
+        case 'favorites_desc':
+          tweets = tweets.sort( 
+              (a, b) => a.favorite_count < b.favorite_count ? 1 : ( a.favorite_count > b.favorite_count ? -1 : 0 ) 
+          );
+          break;
+        case 'date_desc':
+        default:
+          break;
+      }
+        
 
       tweetsRender = tweets.map( (t) => {
 
@@ -60,6 +84,14 @@ export default class Tabs extends Component {
     return (
       <div className="tweetsComp">
         <h5>Tweets</h5>
+        <div className="input-field sortField">
+          <label>Sort order</label>
+          <select onChange={this.handleSortChange} value={this.state.sortOrder}>
+            <option value="date_desc">Most recent</option>
+            <option value="retweets_desc">Most retweets</option>
+            <option value="favorites_desc">Most favorites</option>
+          </select>
+        </div>
         {tweetsRender}
       </div>
     );
