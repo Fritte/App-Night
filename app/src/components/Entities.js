@@ -32,7 +32,17 @@ export default class Entities extends Component {
     entities.sort(function(a,b) {
       var asent = a.sentiment.mixed !== '1' ? a.sentiment.type : 'mixed', bsent = b.sentiment.mixed !== '1' ? b.sentiment.type : 'mixed';
       //var arelev = a.relevance, brelev = b.relevance;
-      return asent < bsent ? 1 : -1; //asent == bsent ? arelev > brelev ? 1 : -1;
+      if (asent == 'positive')  asent = 3;
+      else if (asent == 'negative') asent = 2;
+      else if (asent == 'mixed')  asent = 1;
+      else  asent = 0;
+
+      if (bsent == 'positive')  bsent = 3;
+      else if (bsent == 'negative') bsent = 2;
+      else if (bsent == 'mixed')  bsent = 1;
+      else  bsent = 0;
+
+      return asent < bsent ? 1 : -1;
     });
 
     return (
