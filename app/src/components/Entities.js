@@ -38,7 +38,7 @@ export default class Entities extends Component {
         <div className="entitiesWrapper">
           { entities.map( v => {
               var cName = ClassNames({
-                'btn entity': true,
+                'chip entity': true,
                 'selected': v == this.state.selected,
                 'positive': v.sentiment.type === 'positive',
                 'neutral': v.sentiment.type === 'neutral',
@@ -46,11 +46,11 @@ export default class Entities extends Component {
               });
               var sObj = {};
               return ( 
-                <button className={cName} style={sObj} 
+                <div className={cName} style={sObj} 
                   title={v.text} key={v.text} onClick={this.handleSelect.bind(this, v)}
                 >
                   <span>{v.text}</span>
-                </button>
+                </div>
               );
             })
           }
