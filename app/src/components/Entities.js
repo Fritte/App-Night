@@ -28,7 +28,10 @@ export default class Entities extends Component {
   render() {
     var entities = [];
     if (this.props.entities && this.props.entities.entities) entities = this.props.entities.entities;
-
+    entities.sort(function(a,b) {
+      var asent = a.sentiment.type, bsent = b.sentiment.type;
+      return asent < bsent ? 1 : -1;
+    });
     return (
       <div className="entitiesComp">
         <h5>Most frequent Entities</h5>
