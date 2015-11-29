@@ -27,9 +27,9 @@ export default class Tabs extends Component {
 
     if (this.props.tweets) {
       if(!selectedTag){
-        tweets = this.props.tweets.slice(0, 20);
+        tweets = this.props.tweets.slice(0, 50);
       } else {
-        tweets = this.props.tweets.filter( (t) => t.text.includes(selectedTag)).slice(0, 20); 
+        tweets = this.props.tweets.filter( (t) => t.text.includes(selectedTag)).slice(0, 50); 
       }
 
       switch (this.state.sortOrder) {

@@ -13,16 +13,19 @@ export default class Entities extends Component {
 
   componentWillReceiveProps(nextProps) {
     if (nextProps.entities !== this.props.entities) {
-      console.log('ENTITIES: reset');
       //this.setState({selected: null});
       this.handleSelect(null);
     }
   }
 
   handleSelect(entity) {
-    console.log(entity);
-    this.setState({selected: entity});
-    this.props.setEntity(entity);
+    if (entity == this.state.selected) {
+      this.setState({selected: null});
+      this.props.setEntity(null);
+    } else {
+      this.setState({selected: entity});
+      this.props.setEntity(entity);
+    }
   }
 
   render() {

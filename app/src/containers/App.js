@@ -77,7 +77,7 @@ class App extends Component {
             <div className="top-nav">
               <div className="container">
                 <div className="nav-wrapper">
-                  <a href="#" className="brand-logo">PoliTweet</a>
+                  <a href="#" className="brand-logo">PoliTweets</a>
                 </div>
               </div>
             </div>
