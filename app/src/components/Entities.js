@@ -1,5 +1,5 @@
 import React, { Component, PropTypes } from 'react';
-
+import ClassNames from 'classnames';
 import './Entities.scss';
 
 export default class Entities extends Component {
@@ -32,12 +32,20 @@ export default class Entities extends Component {
     return (
       <div className="entitiesComp">
         <h5>Most frequent Entities</h5>
-        { entities.map( v => 
-            <button className={'btn entity' + (v == this.state.selected ? ' selected' : '')} 
-              title={v.text} key={v.text} onClick={this.handleSelect.bind(this, v)}
-            >
-              <span>{v.text}</span>
-            </button>)
+        { entities.map( v => {
+            var cName = ClassNames({
+              'btn entity': true,
+              'selected': v == this.state.selected
+            });
+            var sObj = {};
+            return ( 
+              <button className={cName} style={sObj} 
+                title={v.text} key={v.text} onClick={this.handleSelect.bind(this, v)}
+              >
+                <span>{v.text}</span>
+              </button>
+            );
+          })
         }
       </div>);
   }
