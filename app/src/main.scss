@@ -89,6 +89,9 @@ $button-color: color("pink", "darken-1") !default;
 .btn-floating i {
   vertical-align: top;
 }
+button:focus {
+  background-color: $secondary-color !important;
+}
 
 /*
  * Materialize-css stlying
